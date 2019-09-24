@@ -66,7 +66,6 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8916 \
     audio.r_submix.default \
     audio.usb.default \
-    audio_amplifier.msm8916 \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
@@ -131,8 +130,8 @@ PRODUCT_PACKAGES += \
     memtrack.msm8916
 
 # Doze
-PRODUCT_PACKAGES += \
-   KiwiDoze
+#PRODUCT_PACKAGES += \
+#   KiwiDoze
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -147,10 +146,6 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@1.0-service.kiwi
-
-# FlipFlap
-PRODUCT_PACKAGES += \
-    FlipFlap
 
 # FM
 PRODUCT_PACKAGES += \
@@ -201,7 +196,9 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.kiwi
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
+    lights.msm8916
 
 # LiveDisplay
 PRODUCT_PACKAGES += \

@@ -22,6 +22,7 @@ audio.offload.video=true
 vendor.audio.offload.buffer.size.kb=64
 
 # Bluetooth
+persist.bluetooth.bluetooth_audio_hal.disabled=true
 ro.bluetooth.dun=true
 ro.bluetooth.hfp.ver=1.6
 ro.bluetooth.sap=true
@@ -61,6 +62,9 @@ sys.hwc.gpu_perf_mode=1
 
 # DRM
 drm.service.enabled=1
+
+# Fingerprint
+ro.fingerprint.cleanup.unused=false
 
 # Log
 log.tag.VM_BMS=WARN

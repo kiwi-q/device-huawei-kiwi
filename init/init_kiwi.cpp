@@ -37,7 +37,6 @@
 #include "vendor_init.h"
 #include "property_service.h"
 
-using android::base::GetProperty;
 using namespace std;
 
 typedef struct {
@@ -185,10 +184,6 @@ void vendor_load_properties()
     string hwsim;
     match_t *match;
 
-    platform = GetProperty("ro.board.platform", "");
-    if (platform != ANDROID_TARGET)
-        return;
-
     ifstream app_info("/proc/app_info");
     if (app_info.is_open()) {
         while (getline(app_info, model) && !contains(model, "huawei_fac_product_name")) {
@@ -219,9 +214,6 @@ void vendor_load_properties()
     if (match->is_cdma) {
         property_set("telephony.lteOnCdmaDevice", "1");
     }
-
-    // Fix single sim variant based on property set by the bootloader
-    hwsim = GetProperty("ro.boot.hwsim", "");
 
     if (hwsim == "single") {
         property_set("ro.telephony.default_network", match->default_network);

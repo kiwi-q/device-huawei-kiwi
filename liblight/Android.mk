@@ -1,11 +1,11 @@
-#
 # Copyright (C) 2014 The CyanogenMod Project
+# Copyright (C) 2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,11 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_kiwi.mk \
-    $(LOCAL_DIR)/arrow_kiwi.mk
+LOCAL_PATH:= $(call my-dir)
+# HAL module implemenation stored in
+# hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.board.platform>.so
+include $(CLEAR_VARS)
 
-COMMON_LUNCH_CHOICES := \
- 	 arrow_kiwi-userdebug \
-	 arrow_kiwi-user \
- 	 arrow_kiwi-eng
+LOCAL_SRC_FILES := lights.c
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_SHARED_LIBRARIES := liblog libcutils
+LOCAL_MODULE := lights.$(TARGET_BOARD_PLATFORM)
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
